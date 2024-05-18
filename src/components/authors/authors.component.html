@@ -1,0 +1,12 @@
+<h2>Authors</h2>
+<div>
+  <button (click)="sortBy(AuthorSortType.Name)">Sort by Name</button>
+  <button (click)="sortBy(AuthorSortType.totalPosts)">Sort by Total Posts</button>
+  <button (click)="sortBy(AuthorSortType.totalComments)">Sort by Total Comments</button>
+</div>
+<ul>
+  <li *ngFor="let author of authors">
+    <img [src]="author.imageUrl" alt="Author Image" width="50">
+    <strong>{{ author.name }}</strong> - Total Posts: {{ author.totalPosts }}, Total Comments: {{ author.totalComments }}
+  </li>
+</ul>
