@@ -19,8 +19,8 @@ export class AurthorDetailComponent implements OnInit {
     itemsPerArticlePage = 5; // Items per page
     currentArticlePage = 1; // Current page
     totalArticles = 0;
-    itemsPerCommentPage = 5; 
-    currentCommentPage = 1; 
+    itemsPerCommentPage = 5;
+    currentCommentPage = 1;
     totalComments = 0;
 
     get totalPageComments(): number {
@@ -89,5 +89,25 @@ export class AurthorDetailComponent implements OnInit {
             pageArray.push(i);
         }
         return pageArray;
+    }
+
+    editAuthor(author: Author) {
+        this.service.updateAppointment(author);
+    }
+
+    onFileSelected(event: any): void {
+        const file: File = event.target.files[0]; // Get the selected file
+        const reader = new FileReader();
+
+        // Define a function to handle the file read completion
+        reader.onload = (e: any) => {
+            // Update the author's imageUrl property with the base64 data URI of the selected image
+            if (this.author) {
+                this.author.imageUrl = e.target.result;
+            }
+        };
+
+        // Read the selected file as a data URL (base64)
+        reader.readAsDataURL(file);
     }
 }

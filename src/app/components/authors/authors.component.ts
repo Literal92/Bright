@@ -2,13 +2,14 @@ import { Component } from "@angular/core";
 import { Author, AuthorSortType } from "../../models/author.model";
 import { HttpService } from "../../shared/http.service";
 import { map } from "rxjs";
+import { BaseComponent } from "../../shared/util/based-component.component";
 
 
 @Component({
     selector: 'app-authors',
     templateUrl: './authors.component.html',
 })
-export class AuthorsComponent {
+export class AuthorsComponent extends BaseComponent {
 
     authors: Author[] = [];
     sortType: AuthorSortType = AuthorSortType.Name;
@@ -20,6 +21,7 @@ export class AuthorsComponent {
   
 
     constructor(private service: HttpService) {
+        super();
         this.service.searchAuthors(this.searchQuery, this.offset, this.limit);
         // Initialize authors array with some sample data
         this.service.author$.pipe(
@@ -61,5 +63,9 @@ export class AuthorsComponent {
     loadMore(): void {
         this.offset += this.limit; // Increment offset for next pagination
         this.service.searchAuthors(this.searchQuery, this.offset, this.limit);
+    }
+
+    override onDestroy(): void {
+        this.authors = [];
     }
 }

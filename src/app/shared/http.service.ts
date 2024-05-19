@@ -17,6 +17,19 @@ export class HttpService {
 
   constructor() { }
 
+
+  addAuthor(author: Author) {
+    author.id = Date.now();
+    AUTHORS.push(author);
+  }
+
+  updateAppointment(updatedAuthor: Author) {
+    const index = AUTHORS.findIndex(author => author.id === updatedAuthor.id);
+    if (index !== -1) {
+      AUTHORS[index] = updatedAuthor;
+    }
+  }
+
   searchAuthors(query: string, offset: number, limit: number): void {
     const startIndex = offset;
     const endIndex = offset + limit;

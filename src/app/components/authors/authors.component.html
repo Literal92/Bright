@@ -19,10 +19,12 @@
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let author of authors">
       <div class="d-flex align-items-center" style="cursor: pointer;" [routerLink]="['/authors', author.id]">
-        <img [src]="author.imageUrl" alt="Author Image" class="me-3 rounded-circle" width="50">
+        <img [src]="author.imageUrl" alt="Author Image" class="me-3 rounded-circle object-fit-cover" width="50"
+          height="50">
         <div>
           <h5 class="mb-0">{{ author.name }}</h5>
-          <small class="text-muted">Total Publications: {{ author.totalPosts }}, Total Comments: {{ author.totalComments
+          <small class="text-muted"><i class="fas fa-book"></i> Total Publications: {{ author.totalPosts }} <i
+              class="fas fa-comments"></i> Total Comments: {{ author.totalComments
             }}</small>
         </div>
       </div>

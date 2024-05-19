@@ -1,19 +1,46 @@
 <!-- Author card (page header) -->
 <div class="container mt-5">
-    <div class="mb-5">
-        <div>
-            <!-- Author Image -->
-        </div>
-        <div>
-            <!-- Author Name (inplace edit) -->
-            <h1>{{ author?.name }}</h1>
-            <!-- Total publications, Total comments (Labels with icons) -->
-            <div>
-                <span>{{ author?.totalPosts }} Publications</span>
-                <span>{{ author?.totalComments }} Comments</span>
+    <!-- author-detail.component.html -->
+
+    <div class="author-card mb-5">
+        <div class="row" *ngIf="author">
+            <!-- Author Image (click to upload image) -->
+            <div class="col-md-4">
+                <div class="author-image d-flex flex-column gap-3">
+                    <!-- Placeholder for author image -->
+                    <img [src]="author.imageUrl" alt="Author Image" style="width: 200px; height: 200px;"
+                        class="object-fit-cover img-fluid rounded-circle">
+                    <input type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;"
+                        #fileInput>
+                    <button class="btn btn-primary" (click)="fileInput.click()">Change Image</button>
+                </div>
+            </div>
+            <!-- Author Name (inplace edit) and Total publications, Total comments (Labels with icons) -->
+            <div class="col-md-8">
+                <div class="author-details">
+                    <!-- Author Name (inplace edit) -->
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Author Name" [(ngModel)]="author.name">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" type="button"
+                                (click)="editAuthor(author)">Edit</button>
+                        </div>
+                    </div>
+
+                    <!-- Total publications, Total comments (Labels with icons) -->
+                    <div class="author-stats">
+                        <div>
+                            <i class="fas fa-book py-2"></i> Total Publications: {{ author.totalPosts }}
+                        </div>
+                        <div>
+                            <i class="fas fa-comments"></i> Total Comments: {{ author.totalComments }}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
 
     <!-- Section: Author publications -->
     <div class="mb-5">

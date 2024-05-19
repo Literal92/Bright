@@ -5,7 +5,7 @@ import { AuthorsComponent } from './components/authors/authors.component';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AddAurthorComponent } from './components/add-aurthor/add-aurthor.component';
-import { HeaderComponent } from './shared/header.component';
+import { HeaderComponent } from './shared/util/header.component';
 import { AurthorDetailComponent } from './components/author-detail/author-detail.component';
 
 
