@@ -26,19 +26,22 @@ export class HttpService {
     this.authorSubject.next(filterAuthors);
   }
 
-  getArticles() {
-  }
-
-  getArticleById(id: number): Article | undefined {
-    return ARTICLES.find(article => article.id === id);
-  }
-
   getAuthorById(id: number): Author | undefined {
     return AUTHORS.find(author => author.id === id);
   }
 
-  getComments(): Comment[] {
-    return COMMENTS;
+  getArticleByAuthorId(id: number, currentPage: number, itemsPerPage: number): { articles: Article[], total: number } {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const articles = ARTICLES.filter(comment => comment.authorId === id);
+    return { articles: articles.slice(startIndex, endIndex), total: articles.length };
+  }
+
+  getCommentsByAuthorId(id: number, currentPage: number, itemsPerPage: number): { comments: Comment[], total: number } {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const comments = COMMENTS.filter(comment => comment.authorId === id);
+    return { comments: comments.slice(startIndex, endIndex), total: comments.length };
   }
 
 }

@@ -6,6 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AddAurthorComponent } from './components/add-aurthor/add-aurthor.component';
 import { HeaderComponent } from './shared/header.component';
+import { AurthorDetailComponent } from './components/author-detail/author-detail.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { HeaderComponent } from './shared/header.component';
     AppComponent,
     AuthorsComponent,
     AddAurthorComponent,
-    HeaderComponent
+    HeaderComponent,
+    AurthorDetailComponent
   ],
   imports: [
     BrowserModule,

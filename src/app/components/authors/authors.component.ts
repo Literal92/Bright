@@ -24,7 +24,6 @@ export class AuthorsComponent {
         // Initialize authors array with some sample data
         this.service.author$.pipe(
             map((res: Author[]) => {
-                debugger
                 if (this.offset === 0) {
                     this.authors = res;
                 } else {

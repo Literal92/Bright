@@ -1,20 +1,31 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Author } from '../../models/author.model';
+import { ImageCropperComponent, ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 
 @Component({
     selector: 'app-add-aurthor',
     templateUrl: './add-aurthor.component.html',
 })
-export class AddAurthorComponent { 
+export class AddAurthorComponent {
 
     newAuthorForm = new FormGroup({
         name: new FormControl('', Validators.required),
         imageUrl: new FormControl('', Validators.required),
         // Add more form controls for other author properties as needed
     });
+    imageChangedEvent: any = '';
+    croppedImage: any = '';
 
-    constructor() {}
+    constructor() { }
+
+    onFileSelected(event: any): void {
+        this.imageChangedEvent = event;
+    }
+
+    imageCropped(event: ImageCroppedEvent): void {
+        this.croppedImage = event.base64;
+    }
 
     addNewAuthor(): void {
         if (this.newAuthorForm.valid) {

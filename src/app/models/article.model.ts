@@ -7,6 +7,8 @@ export class Article {
 
   createdOn: Date;
 
+  authorId: number;
+
   constructor(props?: Partial<Article>) {
     Object.assign(this, props);
   }

@@ -1,5 +1,6 @@
 <div class="container mt-5">
   <app-add-aurthor></app-add-aurthor>
+  <h2>Authors</h2>
   <!-- Sort items -->
   <div class="btn-group mb-3">
     <button class="btn btn-primary" (click)="sortBy(AuthorSortType.Name)">Sort by Name</button>
@@ -17,7 +18,7 @@
   <!-- List Authors -->
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let author of authors">
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center" style="cursor: pointer;" [routerLink]="['/authors', author.id]">
         <img [src]="author.imageUrl" alt="Author Image" class="me-3 rounded-circle" width="50">
         <div>
           <h5 class="mb-0">{{ author.name }}</h5>

@@ -7,6 +7,8 @@ export class Comment {
 
   createdOn: Date;
 
+  authorId: number;
+
   constructor(props?: Partial<Comment>) {
     Object.assign(this, props);
   }
