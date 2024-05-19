@@ -4,13 +4,13 @@ import { HttpService } from "../../shared/http.service";
 import { Author } from "../../models/author.model";
 import { Article } from "../../models/article.model";
 import { Comment } from '../../models/comment.model';
-import { map } from "rxjs";
+import { BaseComponent } from "../../shared/util/based-component.component";
 
 @Component({
     selector: 'app-aurthor-detail',
     templateUrl: './author-detail.component.html',
 })
-export class AurthorDetailComponent implements OnInit {
+export class AurthorDetailComponent extends BaseComponent implements OnInit {
 
     authorId: string | null;
     author: Author | undefined;
@@ -34,7 +34,9 @@ export class AurthorDetailComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private service: HttpService
-    ) { }
+    ) { 
+        super();
+    }
 
     ngOnInit(): void {
         this.authorId = this.route.snapshot.paramMap.get('id');
