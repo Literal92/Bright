@@ -10,7 +10,7 @@ import { BaseComponent } from "../../shared/util/based-component.component";
     selector: 'app-aurthor-detail',
     templateUrl: './author-detail.component.html',
 })
-export class AurthorDetailComponent extends BaseComponent implements OnInit {
+export class AuthorDetailComponent extends BaseComponent implements OnInit {
 
     authorId: string | null;
     author: Author | undefined;
